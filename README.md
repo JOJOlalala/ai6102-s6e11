@@ -71,3 +71,7 @@ Run everything from the repository root. Each line of a grid file is one 5-fold 
 - `codex/` was called `codex_review/` when the runs were made, so paths recorded in `results/*.json` still use the old name.
 - Per-value target encoding, digit keys, shallow trees and GLM-initialised boosting come from the Kaggle community. [Discussion 755149](https://www.kaggle.com/competitions/playground-series-s6e11/discussion/755149) collects the sources.
 - The code was written with AI coding assistants (Claude Code and OpenAI Codex) under the author's direction. Codex wrote the scripts in `codex/`; the report's AI statement gives details.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
