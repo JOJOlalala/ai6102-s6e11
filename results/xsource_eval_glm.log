@@ -1,0 +1,6 @@
+== GLM only, seeds 42/7/2026: 3 seed pair(s); original rows covered on amount and balance: 10729 (53.6%), positives 175 of 339
+  competition OOF                n=699960 pos=11689  AUC real 0.94962 placebo 0.94556 delta +0.00407 | beta +0.981 (Wald [+0.936, +1.026], LR p 0.0000)
+  original, all rows             n= 20000 pos=  339  AUC real 0.93587 placebo 0.93980 delta -0.00393 [-0.00877, +0.00055] | beta +0.277 (Wald [+0.093, +0.461], LR p 0.0025; boot [+0.088, +0.472])
+  original, covered              n= 10729 pos=  175  AUC real 0.92652 placebo 0.93364 delta -0.00712 [-0.01552, +0.00037] | beta +0.150 (Wald [-0.093, +0.394], LR p 0.2198; boot [-0.111, +0.440])
+  original, not covered          n=  9271 pos=  164  AUC real 0.94595 placebo 0.94650 delta -0.00055 [-0.00561, +0.00432] | beta +0.433 (Wald [+0.152, +0.714], LR p 0.0017; boot [+0.169, +0.718])
+  beta covered - not covered: -0.283 (se 0.190, z -1.49, two-sided p 0.136)

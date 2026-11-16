@@ -1,0 +1,41 @@
+--- src/train2.py
++++ transfer_train.py
+@@ -53,7 +53,12 @@
+     tr = pd.read_csv(d / "train.csv")
+     te = pd.read_csv(d / "test.csv")
+     feats = [c for c in tr.columns if c not in ("id", TARGET)]
+-    allx = pd.concat([tr[feats], te[feats]], ignore_index=True)
++    source = pd.read_csv(d / "credit_card_fraud_2026.csv", usecols=feats)
++    official_count = len(tr) + len(te)
++    official = pd.concat([tr[feats], te[feats]], ignore_index=True)
++    for col in CAT:
++        assert set(source[col].dropna()).issubset(set(official[col].dropna()))
++    allx = pd.concat([official, source[feats]], ignore_index=True)
+     y = tr[TARGET].to_numpy(dtype=np.int8)
+     n_tr = len(tr)
+ 
+@@ -70,12 +75,12 @@
+     bins = {}  # name -> 32 quantile bins of the raw column (placebo control for exact-value keys)
+     for c in num + CAT:
+         keys[f"v_{c}"] = pd.factorize(allx[c].astype(str))[0]
+-        if c in num and allx[c].nunique() > 32:
+-            bins[f"v_{c}"] = pd.qcut(allx[c].rank(method="first"), 32, labels=False).to_numpy()
++        if c in num and official[c].nunique() > 32:
++            bins[f"v_{c}"] = pd.qcut(official[c].rank(method="first"), 32, labels=False).to_numpy()
+     if "digits" in fe:
+         for c in FLOATS:
+             for k, v in digit_keys(allx[c]).items():
+-                if len(np.unique(v)) > 1:
++                if len(np.unique(v[:official_count])) > 1:
+                     X[f"{c}__{k}"] = v.astype(np.int32)
+                     keys[f"d_{c}__{k}"] = pd.factorize(v)[0]
+                     if f"v_{c}" in bins:  # placebo for a digit key: shuffle within the parent column's bins
+@@ -296,6 +301,8 @@
+             p_ap = mdl.predict_proba(Xap)[:, 1]
+             it = int(mdl.best_iteration)
+ 
++        # The source rows follow the official test set, in their original file order.
++        np.save(out / f"source_fold{k+1}.npy", p_ap[nva + len(test_ids):])
+         oof[vai] = p_ap[:nva]
+         test_pred += p_ap[nva:] / a.folds
+         fold_auc.append(roc_auc_score(yva, p_ap[:nva]))

@@ -1,0 +1,12 @@
+# Grid v3 — early stopping on an inner slice of the outer-training rows (--es inner) for every run.
+# P. Codex's pre-specified exact-value test (fixed 4-leaf LightGBM, no digit keys), smoothing m=20
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model lgbm --fe base --es inner --threads 8 > logs/P_A.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model lgbm --fe base,te --te_cols merchant_risk_score --es inner --threads 8 > logs/P_B.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model lgbm --fe base,te --te_cols merchant_risk_score --te_placebo 1 --es inner --threads 8 > logs/P_C.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model lgbm --fe base,te --te_cols merchant_risk_score,velocity_score,amount_usd --es inner --threads 8 > logs/P_D.log 2>&1
+# F. fingerprint test on the full pipeline: all encodings real vs all encodings placebo (within-bin shuffled)
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --threads 8 > logs/F_real.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --te_placebo 1 --es inner --threads 8 > logs/F_placebo.log 2>&1
+# M. main model with inner early stopping, 3 seeds (for the final blend)
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --threads 8 --seed 7 > logs/M_s7.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --threads 8 --seed 2026 > logs/M_s2026.log 2>&1

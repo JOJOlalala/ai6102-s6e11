@@ -1,0 +1,9 @@
+# v4: strict target-encoding protocol (Codex's review of te_block): full-pipeline real vs placebo, three seeds,
+# plus the label-shuffle leakage test. Same model as the main runs: GLM-initialised 4-leaf LightGBM, inner early stopping.
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --seed 42 --threads 8 > logs/S_real_s42.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --te_placebo 1 --seed 42 --threads 8 > logs/S_placebo_s42.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --seed 7 --threads 8 > logs/S_real_s7.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --te_placebo 1 --seed 7 --threads 8 > logs/S_placebo_s7.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --seed 2026 --threads 8 > logs/S_real_s2026.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --te_placebo 1 --seed 2026 --threads 8 > logs/S_placebo_s2026.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --shuffle_labels 1 --seed 42 --threads 8 > logs/S_shuffle.log 2>&1

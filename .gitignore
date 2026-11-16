@@ -1,0 +1,18 @@
+# Competition data and third-party inputs are not redistributed
+/data/
+/public/
+
+# Run outputs (large)
+/runs/
+/logs/
+/subs/
+/catboost_info/
+/report_tmp/
+*.npy
+*.npz
+
+# Environment
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

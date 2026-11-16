@@ -1,0 +1,18 @@
+# Grid v2 — feature ladder with in-fold target encoding (src/train2.py). Same outer folds as v1.
+# L. ladder: each line adds one idea
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model lgbm --fe base --threads 8 > logs/L1_lgbm4_base.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model lgbm --fe base,te --threads 8 > logs/L2_lgbm4_te.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model lgbm --fe base,digits --threads 8 > logs/L3_lgbm4_digits.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model lgbm --fe base,digits,te --threads 8 > logs/L4_lgbm4_digits_te.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm --fe base,digits,te --threads 8 > logs/L5_glm.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --threads 8 > logs/L6_glm_lgbm.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te,freq --threads 8 > logs/L7_glm_lgbm_freq.log 2>&1
+# Q. checks: label-shuffle leakage test (expect ~0.5); smoothing strength
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --threads 8 --shuffle_labels 1 > logs/Q_shuffle.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --threads 8 --te_m 5 > logs/Q_m5.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --threads 8 --te_m 80 > logs/Q_m80.log 2>&1
+# S. seeds of the main model (seed changes inner TE folds and tree sampling; outer folds fixed)
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --threads 8 --seed 7 > logs/S_glm_lgbm_s7.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --threads 8 --seed 2026 > logs/S_glm_lgbm_s2026.log 2>&1
+# X. a different learner on the same features (GPU)
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train2.py --model xgb --fe base,digits,te --threads 8 > logs/X_xgb3.log 2>&1

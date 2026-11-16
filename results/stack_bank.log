@@ -1,0 +1,57 @@
+folds.csv columns: ['id', 'fold']
+bank folds identical to StratifiedKFold(5, shuffle=True, random_state=42): True
+20 core members
+  0.95150  (manifest 0.95150)  gb_bag10
+  0.95146  (manifest 0.95146)  gbx_bag5
+  0.95126  (manifest 0.95126)  gbc_bag3
+  0.95122  (manifest 0.95122)  gbn_bag5_w512
+  0.95122  (manifest 0.95122)  gbn_bag5_w128
+  0.95115  (manifest 0.95115)  gbe_bag3
+  0.95107  (manifest 0.95107)  gbr_bag3
+  0.95063  (manifest 0.95063)  lgb_diglead_l3_bag
+  0.95054  (manifest 0.95054)  lgb_diglead_bag5
+  0.95051  (manifest 0.95051)  glm_dl_s50_bag
+  0.95049  (manifest 0.95049)  lgb_dig_s100_bag5
+  0.95026  (manifest 0.95026)  ebm_i25_bag4
+  0.95016  (manifest 0.95015)  lgb_dig_l7
+  0.95012  (manifest 0.95012)  glm_ohk2_bag
+  0.94981  (manifest 0.94981)  ebm_dig
+  0.94867  (manifest 0.94867)  realmlp_dig_s2
+  0.94837  (manifest 0.94837)  lgb_rawdig_l4
+  0.94778  (manifest 0.94778)  lgb_raw_l4_cnt
+  0.94771  (manifest 0.94771)  realmlp_te
+  0.94749  (manifest 0.94749)  xgb_raw_d3
+largest |recomputed - manifest| OOF AUC: 0.000000
+  ours 0.95023  v2_glm_lgbm_base+digits+te_m20_esin_s42
+  ours 0.95019  v2_glm_lgbm_base+digits+te_m20_esin_s7
+  ours 0.95013  v2_glm_lgbm_base+digits+te_m20_esin_s2026
+  ours, rank mean of 3 seeds: 0.95036
+bank20       pooled OOF AUC 0.951479  per fold 0.95044 0.95194 0.95628 0.95237 0.94676
+bank20+ours  pooled OOF AUC 0.951476  per fold 0.95044 0.95194 0.95628 0.95237 0.94675
+adding ours, per-fold change: +0.000001 -0.000000 +0.000002 -0.000002 -0.000009 mean -0.000002
+public-sized paired difference: sd 0.000007, same sign as pooled (-0.000003) in 65% of 300 draws
+stack weights (bank20+ours, all rows), largest first:
+  +0.3200  gb_bag10
+  +0.2387  gbx_bag5
+  +0.2050  gbc_bag3
+  +0.1762  ebm_i25_bag4
+  +0.1599  gbn_bag5_w128
+  -0.1090  glm_dl_s50_bag
+  +0.1018  lgb_rawdig_l4
+  +0.0987  lgb_dig_l7
+  +0.0955  gbe_bag3
+  -0.0841  realmlp_dig_s2
+  +0.0592  lgb_diglead_l3_bag
+  +0.0541  gbn_bag5_w512
+  -0.0518  ebm_dig
+  +0.0515  lgb_dig_s100_bag5
+  +0.0434  lgb_raw_l4_cnt
+  -0.0384  realmlp_te
+  +0.0315  lgb_diglead_bag5
+  +0.0168  glm_ohk2_bag
+  -0.0143  gbr_bag3
+  +0.0108  xgb_raw_d3
+  +0.0039  ours
+check subs/sub2_bankstack.csv: rows 299984, ids match test order True, range [0.0000, 1.0000] -> OK
+check subs/sub3_bonus_public80.csv: rows 299984, ids match test order True, range [0.0000, 1.0000] -> OK
+Spearman on test: {'public_vs_sub2': 0.9846, 'public_vs_ours': 0.9747, 'sub2_vs_ours': 0.99272, 'public_vs_sub1': 0.9739}

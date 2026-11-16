@@ -1,0 +1,8 @@
+competition OOF (seed 42)          n=699960 pos=11689  beta +0.868  Wald 95% [+0.820, +0.916]  z +35.43  LR chi2 1312.86 (p=0.0000)
+original 20k rows (5-model mean)   n=20000 pos=339  beta +0.218  Wald 95% [+0.002, +0.433]  z +1.98  LR chi2 3.99 (p=0.0458)  bootstrap 95% [-0.000, +0.462]
+original 20k rows, fold model 1    n=20000 pos=339  beta +0.264  Wald 95% [+0.072, +0.457]  z +2.69  LR chi2 7.55 (p=0.0060)
+original 20k rows, fold model 2    n=20000 pos=339  beta +0.218  Wald 95% [+0.036, +0.400]  z +2.34  LR chi2 5.62 (p=0.0178)
+original 20k rows, fold model 3    n=20000 pos=339  beta +0.376  Wald 95% [+0.200, +0.553]  z +4.18  LR chi2 17.98 (p=0.0000)
+original 20k rows, fold model 4    n=20000 pos=339  beta +0.216  Wald 95% [+0.026, +0.405]  z +2.23  LR chi2 5.07 (p=0.0244)
+original 20k rows, fold model 5    n=20000 pos=339  beta +0.332  Wald 95% [+0.144, +0.521]  z +3.45  LR chi2 12.21 (p=0.0005)
+one-sided p for beta < 0 on the original rows equals half the two-sided Wald p when beta is negative; reference: z = -1.645 is p = 0.050

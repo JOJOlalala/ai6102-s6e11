@@ -1,0 +1,6 @@
+  prior_disputes           unique in original      5  covered 100.00%  (positives covered 100.00%)
+competition 3-seed rank mean: real - placebo = +0.00249
+original-sized subsets (339 positives, 19661 negatives, 1000 draws): mean +0.00248, sd 0.00140, share > 0 95.7%, share > 1.645 sd 54.5%
+one-sided 5% test, power if the full effect transferred: 55%; if half transferred: 22%; smallest effect detectable with 80% power: 0.00348
+transfer coefficient on all competition OOF rows: beta 0.924 (se 0.027)
+original-sized subsets (300 draws): beta mean 0.937, sd 0.158; power of one-sided 5% Wald test if the full effect transferred: 100%

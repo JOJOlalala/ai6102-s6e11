@@ -1,0 +1,20 @@
+original: 20000 rows, 339 positives (1.70%)
+original rows matching a competition row on all 24 features: train 0, test 0, either 0 (positives among them: 0)
+original rows matching a competition row on six float columns: train 0, test 0, either 0 (positives among them: 0)
+exact-value coverage of original rows in train.csv (share of original rows whose value occurs in train):
+  amount_usd               unique in original  12782  covered  76.08%  (positives covered  72.86%)
+  hours_since_last_txn     unique in original   3296  covered  97.91%  (positives covered  98.82%)
+  txn_count_last_24h       unique in original     13  covered 100.00%  (positives covered  99.71%)
+  distance_from_home_km    unique in original   6121  covered  86.65%  (positives covered  88.20%)
+  card_age_months          unique in original     52  covered  99.98%  (positives covered 100.00%)
+  customer_age             unique in original     64  covered 100.00%  (positives covered 100.00%)
+  account_balance_usd      unique in original  19629  covered  70.53%  (positives covered  71.39%)
+  cvv_retry_count          unique in original      4  covered 100.00%  (positives covered 100.00%)
+  velocity_score           unique in original    634  covered  99.95%  (positives covered 100.00%)
+  time_of_day_hour         unique in original     24  covered 100.00%  (positives covered 100.00%)
+  day_of_week              unique in original      7  covered 100.00%  (positives covered 100.00%)
+  merchant_risk_score      unique in original    940  covered  99.56%  (positives covered  99.71%)
+  prior_disputes           unique in original      5  covered 100.00%  (positives covered 100.00%)
+competition 3-seed rank mean: real - placebo = +0.00249
+original-sized subsets (339 positives, 19661 negatives, 1000 draws): mean +0.00248, sd 0.00140, share > 0 95.7%, share > 1.645 sd 54.5%
+one-sided 5% test, power if the full effect transferred: 55%; if half transferred: 22%; smallest effect detectable with 80% power: 0.00348

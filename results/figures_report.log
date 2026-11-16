@@ -1,0 +1,33 @@
+depth 1: pooled 0.94710  per-fold vs depth 2 (x1e-3) -0.84 -0.48 -0.43 -0.46 -0.62  folds below depth 2: 5/5
+depth 2: pooled 0.94763  per-fold vs depth 2 (x1e-3) +0.00 +0.00 +0.00 +0.00 +0.00  folds below depth 2: 0/5
+depth 3: pooled 0.94741  per-fold vs depth 2 (x1e-3) -0.43 +0.01 -0.03 -0.09 -0.65  folds below depth 2: 4/5
+depth 4: pooled 0.94691  per-fold vs depth 2 (x1e-3) -1.01 -0.72 -0.54 -0.50 -0.94  folds below depth 2: 5/5
+depth 6: pooled 0.94630  per-fold vs depth 2 (x1e-3) -1.67 -0.81 -1.00 -1.02 -1.84  folds below depth 2: 5/5
+wrote report_tmp/figs/depth.pdf/.png
+lbnoise: full OOF 0.95025; 300 draws sd 0.00324, 5-95% [0.9447, 0.9553], share >= 0.95349 14.7%
+wrote report_tmp/figs/lbnoise.pdf/.png
+transfer GLM + 4-leaf LightGBM, seed 42       competition OOF        beta +0.868 [+0.820, +0.916]
+transfer GLM + 4-leaf LightGBM, seed 42       original, all rows     beta +0.218 [-0.000, +0.462]
+transfer GLM + 4-leaf LightGBM, seed 42       original, covered      beta +0.173 [-0.158, +0.501]
+transfer GLM + 4-leaf LightGBM, seed 42       original, not covered  beta +0.270 [-0.047, +0.600]
+transfer GLM only, 3 seeds                    competition OOF        beta +0.981 [+0.936, +1.026]
+transfer GLM only, 3 seeds                    original, all rows     beta +0.277 [+0.088, +0.472]
+transfer GLM only, 3 seeds                    original, covered      beta +0.150 [-0.111, +0.440]
+transfer GLM only, 3 seeds                    original, not covered  beta +0.433 [+0.169, +0.718]
+wrote report_tmp/figs/transfer.pdf/.png
+rows: train 699960, test 299984, source 20000; frauds: train 11689 (1.67%), source 339 (1.70%); missing values: train 0, source 0
+mean amount_usd: competition train 79.9, source 132.4
+flag is_foreign_transaction         competition   1.73%  source   6.20%  ratio  3.59
+flag is_new_merchant                competition  15.25%  source  23.00%  ratio  1.51
+flag used_vpn                       competition   3.38%  source   8.79%  ratio  2.60
+flag ip_country_mismatch            competition   1.62%  source   5.83%  ratio  3.61
+flag billing_shipping_mismatch      competition   1.29%  source   4.37%  ratio  3.37
+flag is_ai_generated_scam_attempt   competition   0.33%  source   1.88%  ratio  5.71
+numeric columns: 13; with > 32 distinct values (placebo-shuffled, with their digit keys): ['amount_usd', 'hours_since_last_txn', 'distance_from_home_km', 'card_age_months', 'customer_age', 'account_balance_usd', 'velocity_score', 'merchant_risk_score']
+distinct values over train+test: amount_usd 14800, hours_since_last_txn 3755, txn_count_last_24h 12, distance_from_home_km 4465, card_age_months 50, customer_age 64, account_balance_usd 49123, cvv_retry_count 4, velocity_score 674, time_of_day_hour 24, day_of_week 7, merchant_risk_score 959, prior_disputes 5
+exact-value coverage amount_usd               validation fold rows seen in training folds  99.37%  test rows seen in train  99.46%
+exact-value coverage hours_since_last_txn     validation fold rows seen in training folds  99.94%  test rows seen in train  99.95%
+exact-value coverage distance_from_home_km    validation fold rows seen in training folds  99.95%  test rows seen in train  99.96%
+exact-value coverage account_balance_usd      validation fold rows seen in training folds  97.43%  test rows seen in train  97.78%
+exact-value coverage velocity_score           validation fold rows seen in training folds  99.99%  test rows seen in train 100.00%
+exact-value coverage merchant_risk_score      validation fold rows seen in training folds  99.99%  test rows seen in train 100.00%

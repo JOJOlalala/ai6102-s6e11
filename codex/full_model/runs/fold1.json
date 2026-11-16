@@ -1,0 +1,26 @@
+{
+  "A": {
+    "auc": 0.9488792336120513,
+    "iters": 260,
+    "feature_count": 99,
+    "te_count": 45
+  },
+  "B": {
+    "auc": 0.9486583879218925,
+    "iters": 99,
+    "feature_count": 100,
+    "te_count": 46
+  },
+  "C": {
+    "auc": 0.9487718415434816,
+    "iters": 159,
+    "feature_count": 100,
+    "te_count": 46
+  },
+  "D": {
+    "auc": 0.948614098174498,
+    "iters": 95,
+    "feature_count": 102,
+    "te_count": 48
+  }
+}

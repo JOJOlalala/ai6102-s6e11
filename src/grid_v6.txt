@@ -1,0 +1,8 @@
+# v6: clean "no value-level encoding" control for the placebo comparison (report Sec. 4.3).
+# Main model under the strict protocol with inner early stopping, but only the 10 narrow columns are target-encoded
+# (5 numeric columns with <= 32 distinct values + 5 categoricals). The 8 wide numeric columns lose their exact-value
+# encodings and all 30 digit keys lose their encodings; the digit keys stay in as raw integer features.
+# real (grid_v4) - narrow = net gain of value-level encodings; narrow - placebo (grid_v4) = cost of shuffled encodings.
+OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --te_cols txn_count_last_24h,cvv_retry_count,time_of_day_hour,day_of_week,prior_disputes,merchant_category,card_type,auth_method,channel,device_type --name v2_glm_lgbm_narrowte_strict_m20_esin_s42 --seed 42 --threads 4 > logs/N_narrow_s42.log 2>&1
+OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --te_cols txn_count_last_24h,cvv_retry_count,time_of_day_hour,day_of_week,prior_disputes,merchant_category,card_type,auth_method,channel,device_type --name v2_glm_lgbm_narrowte_strict_m20_esin_s7 --seed 7 --threads 4 > logs/N_narrow_s7.log 2>&1
+OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 .venv/bin/python -I src/train2.py --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --te_cols txn_count_last_24h,cvv_retry_count,time_of_day_hour,day_of_week,prior_disputes,merchant_category,card_type,auth_method,channel,device_type --name v2_glm_lgbm_narrowte_strict_m20_esin_s2026 --seed 2026 --threads 4 > logs/N_narrow_s2026.log 2>&1

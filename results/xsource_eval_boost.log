@@ -1,0 +1,6 @@
+== GLM-initialised 4-leaf LightGBM, seed 42 (Codex runs): 1 seed pair(s); original rows covered on amount and balance: 10729 (53.6%), positives 175 of 339
+  competition OOF                n=699960 pos=11689  AUC real 0.95011 placebo 0.94727 delta +0.00284 | beta +0.868 (Wald [+0.820, +0.916], LR p 0.0000)
+  original, all rows             n= 20000 pos=  339  AUC real 0.93686 placebo 0.93977 delta -0.00290 [-0.00641, +0.00051] | beta +0.218 (Wald [+0.002, +0.433], LR p 0.0458; boot [-0.000, +0.462])
+  original, covered              n= 10729 pos=  175  AUC real 0.92794 placebo 0.93290 delta -0.00496 [-0.01135, +0.00064] | beta +0.173 (Wald [-0.124, +0.470], LR p 0.2505; boot [-0.158, +0.501])
+  original, not covered          n=  9271 pos=  164  AUC real 0.94644 placebo 0.94729 delta -0.00085 [-0.00470, +0.00317] | beta +0.270 (Wald [-0.044, +0.584], LR p 0.0880; boot [-0.047, +0.600])
+  beta covered - not covered: -0.098 (se 0.221, z -0.44, two-sided p 0.658)

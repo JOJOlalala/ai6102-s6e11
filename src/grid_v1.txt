@@ -1,0 +1,23 @@
+# Grid v1 — every line is one CV run (5 folds, fold_seed 42). Logs: logs/<tag>.log, results: runs/log.jsonl
+# A. reference (LightGBM, 63 leaves, lr 0.03, raw features), with / without original data
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 0 --threads 8 > logs/A_lgbm_orig0.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 1 --threads 8 > logs/A_lgbm_orig1.log 2>&1
+# B. interaction order at a FIXED learning rate (0.05); only max_depth / num_leaves = 2^depth change
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 0 --threads 8 --params '{"learning_rate": 0.05, "max_depth": 1, "num_leaves": 2}' > logs/B_d1.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 0 --threads 8 --params '{"learning_rate": 0.05, "max_depth": 2, "num_leaves": 4}' > logs/B_d2.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 0 --threads 8 --params '{"learning_rate": 0.05, "max_depth": 3, "num_leaves": 8}' > logs/B_d3.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 0 --threads 8 --params '{"learning_rate": 0.05, "max_depth": 4, "num_leaves": 16}' > logs/B_d4.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 0 --threads 8 --params '{"learning_rate": 0.05, "max_depth": 6, "num_leaves": 64}' > logs/B_d6.log 2>&1
+# C. linear and additive logistic models
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lr --orig 0 --threads 8 > logs/C_lr.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model gam --orig 0 --threads 8 > logs/C_gam.log 2>&1
+# D. unsupervised feature blocks on the reference LightGBM (target encodings come in v2, built in-fold)
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 0 --threads 8 --fe base,flags > logs/D_flags.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 0 --threads 8 --fe base,ratio > logs/D_ratio.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 0 --threads 8 --fe base,freq > logs/D_freq.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model lgbm --orig 0 --threads 8 --fe base,origte > logs/D_origte.log 2>&1
+# E. other GBDTs on the GPU (raw features)
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model xgb --orig 0 --threads 8 > logs/E_xgb_d6.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model xgb --orig 0 --threads 8 --params '{"max_depth": 3}' > logs/E_xgb_d3.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model cat --orig 0 --threads 8 > logs/E_cat_d6.log 2>&1
+OMP_NUM_THREADS=8 .venv/bin/python -I src/train.py --model cat --orig 0 --threads 8 --params '{"depth": 4}' > logs/E_cat_d4.log 2>&1

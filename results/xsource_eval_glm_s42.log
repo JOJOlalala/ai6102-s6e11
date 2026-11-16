@@ -1,0 +1,6 @@
+== GLM only, seed 42: 1 seed pair(s); original rows covered on amount and balance: 10729 (53.6%), positives 175 of 339
+  competition OOF                n=699960 pos=11689  AUC real 0.94960 placebo 0.94507 delta +0.00454 | beta +0.972 (Wald [+0.929, +1.015], LR p 0.0000)
+  original, all rows             n= 20000 pos=  339  AUC real 0.93609 placebo 0.93953 delta -0.00344 | beta +0.303 (Wald [+0.119, +0.486], LR p 0.0009)
+  original, covered              n= 10729 pos=  175  AUC real 0.92696 placebo 0.93341 delta -0.00645 | beta +0.193 (Wald [-0.052, +0.438], LR p 0.1165)
+  original, not covered          n=  9271 pos=  164  AUC real 0.94595 placebo 0.94623 delta -0.00028 | beta +0.436 (Wald [+0.159, +0.713], LR p 0.0014)
+  beta covered - not covered: -0.243 (se 0.189, z -1.29, two-sided p 0.199)

@@ -1,0 +1,19 @@
+seed 42: real 0.95012, narrow 0.94821, placebo 0.94729
+  real - narrow        0.95012 - 0.94821 = +0.00191  folds > 0: 5/5  per fold +0.00200 +0.00079 +0.00266 +0.00274 +0.00130  | 60k paired sd 0.00079, same sign 99%
+  narrow - placebo     0.94821 - 0.94729 = +0.00092  folds > 0: 5/5  per fold +0.00129 +0.00115 +0.00128 +0.00069 +0.00039  | 60k paired sd 0.00053, same sign 94%
+  real - placebo       0.95012 - 0.94729 = +0.00283  folds > 0: 5/5  per fold +0.00330 +0.00194 +0.00394 +0.00343 +0.00169  | 60k paired sd 0.00086, same sign 100%
+seed 7: real 0.94996, narrow 0.94801, placebo 0.94736
+  real - narrow        0.94996 - 0.94801 = +0.00195  folds > 0: 5/5  per fold +0.00245 +0.00071 +0.00269 +0.00252 +0.00141  | 60k paired sd 0.00076, same sign 100%
+  narrow - placebo     0.94801 - 0.94736 = +0.00065  folds > 0: 4/5  per fold +0.00148 +0.00055 +0.00051 +0.00087 -0.00005  | 60k paired sd 0.00052, same sign 88%
+  real - placebo       0.94996 - 0.94736 = +0.00260  folds > 0: 5/5  per fold +0.00394 +0.00126 +0.00320 +0.00339 +0.00137  | 60k paired sd 0.00084, same sign 100%
+seed 2026: real 0.95010, narrow 0.94824, placebo 0.94739
+  real - narrow        0.95010 - 0.94824 = +0.00186  folds > 0: 5/5  per fold +0.00273 +0.00076 +0.00255 +0.00220 +0.00110  | 60k paired sd 0.00077, same sign 99%
+  narrow - placebo     0.94824 - 0.94739 = +0.00086  folds > 0: 5/5  per fold +0.00029 +0.00094 +0.00106 +0.00133 +0.00055  | 60k paired sd 0.00054, same sign 96%
+  real - placebo       0.95010 - 0.94739 = +0.00272  folds > 0: 5/5  per fold +0.00302 +0.00169 +0.00361 +0.00352 +0.00166  | 60k paired sd 0.00090, same sign 100%
+3-seed rank mean: real 0.95033, narrow 0.94833, placebo 0.94784
+  real - narrow        0.95033 - 0.94833 = +0.00200  folds > 0: 5/5  per fold +0.00254 +0.00087 +0.00271 +0.00255 +0.00137  | 60k paired sd 0.00073, same sign 100%
+  narrow - placebo     0.94833 - 0.94784 = +0.00048  folds > 0: 4/5  per fold +0.00066 +0.00055 +0.00058 +0.00071 -0.00000  | 60k paired sd 0.00043, same sign 88%
+  real - placebo       0.95033 - 0.94784 = +0.00249  folds > 0: 5/5  per fold +0.00319 +0.00142 +0.00329 +0.00326 +0.00137  | 60k paired sd 0.00075, same sign 100%
+real - narrow over seeds: mean +0.00191, sd 0.00005, min +0.00186, max +0.00195
+narrow - placebo over seeds: mean +0.00081, sd 0.00014, min +0.00065, max +0.00092
+real - placebo over seeds: mean +0.00272, sd 0.00011, min +0.00260, max +0.00283
