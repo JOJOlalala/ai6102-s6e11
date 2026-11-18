@@ -1,0 +1,22 @@
+== GLM-initialised 4-leaf LightGBM, seed 42
+   competition: gamma 1.006  beta 0.868  beta/gamma 0.863
+   source:      gamma 0.851  beta 0.218  beta/gamma 0.256
+   competition AUC by b: 0.00: 0.94727  0.10: 0.94791  0.25: 0.94872  0.50: 0.94966  0.75: 0.95011  1.00: 0.95011
+   source AUC by b:      0.00: 0.93952  0.10: 0.93969  0.25: 0.93979  0.50: 0.93930  0.75: 0.93816  1.00: 0.93641
+   b cross-fitted on the source rows, by fold: 0.135 0.180 0.286 0.352 0.326
+   source, placebo arm (b = 0): AUC 0.93952
+   source, real arm (b = 1)             AUC 0.93641  minus placebo -0.00311  bootstrap 95% [-0.00675, +0.00047]
+   source, b = 0.25 (fixed, post hoc)   AUC 0.93979  minus placebo +0.00027  bootstrap 95% [-0.00060, +0.00114]
+   source, b from competition (0.86)    AUC 0.93745  minus placebo -0.00207  bootstrap 95% [-0.00514, +0.00098]
+   source, b cross-fitted on source     AUC 0.93939  minus placebo -0.00014  bootstrap 95% [-0.00098, +0.00069]
+== GLM only, seeds 42, 7 and 2026
+   competition: gamma 1.001  beta 0.981  beta/gamma 0.980
+   source:      gamma 0.865  beta 0.277  beta/gamma 0.320
+   competition AUC by b: 0.00: 0.94554  0.10: 0.94637  0.25: 0.94742  0.50: 0.94869  0.75: 0.94941  1.00: 0.94961
+   source AUC by b:      0.00: 0.93939  0.10: 0.93969  0.25: 0.93978  0.50: 0.93919  0.75: 0.93767  1.00: 0.93535
+   b cross-fitted on the source rows, by fold: 0.249 0.282 0.324 0.356 0.393
+   source, placebo arm (b = 0): AUC 0.93939
+   source, real arm (b = 1)             AUC 0.93535  minus placebo -0.00404  bootstrap 95% [-0.00900, +0.00058]
+   source, b = 0.25 (fixed, post hoc)   AUC 0.93978  minus placebo +0.00038  bootstrap 95% [-0.00074, +0.00146]
+   source, b from competition (0.98)    AUC 0.93557  minus placebo -0.00382  bootstrap 95% [-0.00870, +0.00070]
+   source, b cross-fitted on source     AUC 0.93951  minus placebo +0.00012  bootstrap 95% [-0.00131, +0.00150]

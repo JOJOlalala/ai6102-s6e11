@@ -54,13 +54,14 @@ Run everything from the repository root. Each line of a grid file is one 5-fold 
 |---|---|
 | Model family and interaction order, effect of tree depth, features tried and dropped | `bash src/run_grid.sh src/grid_v1.txt 7` |
 | Feature ladder, leakage and smoothing checks | `bash src/run_grid.sh src/grid_v2.txt 7` |
-| Exact-value encodings of three preset fields (4-leaf model), main-model seeds | `bash src/run_grid.sh src/grid_v3.txt 7` |
+| Exact-value encodings of three preset fields (4-leaf model; an early check that the report no longer tabulates), main-model seeds | `bash src/run_grid.sh src/grid_v3.txt 7` |
 | Leakage and placebo controls (strict protocol) | grids `v4` and `v6`, then `src/placebo_compare.py` and `src/narrow_compare.py` |
+| Where the gain sits (one wide column at a time) and the second fold split | `bash src/run_grid.sh src/grid_v7.txt 3` (writes to `runs/v7/`; the `fs7_*` runs use fold seed 7), then `src/column_compare.py` |
 | Binned additive logit with and without preset interactions | `codex/interaction_probe.py data/playground-series-s6e11.zip` |
-| Exact-value encodings of three preset fields (full model) | `codex/full_model/run_fold.py --fold K` for K = 1..5, then `codex/full_model/score.py` |
+| Exact-value encodings of three preset fields (full model; lower block of the per-column table) | `codex/full_model/run_fold.py --fold K` for K = 1..5, then `codex/full_model/score.py` |
 | Public-board noise | `src/lb_noise.py`; the report figure comes from `src/figures_report.py` |
 | Ensembles and submissions | `src/ensemble.py`, `src/stack_bank.py` |
-| Transfer test on the source table | `src/xsource_precheck.py`, grid `v5` (`src/xsource_train.py`), `src/xsource_eval.py`, `src/xsource_beta.py`, `codex/source_transfer/score_transfer.py` |
+| Transfer test on the source table | `src/xsource_precheck.py`, grid `v5` (`src/xsource_train.py`), `src/xsource_eval.py`, `src/xsource_beta.py`, `src/xsource_shrink.py` (down-weighting check), `codex/source_transfer/score_transfer.py` |
 | Report figures | `src/figures_report.py` |
 
 `codex/value_probe.py data/playground-series-s6e11.zip` is a univariate check that compares exact-value, binned and placebo encodings of the three preset fields. Its outputs are `codex/value_*.csv`.
