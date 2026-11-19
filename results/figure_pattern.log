@@ -1,0 +1,27 @@
+competition rows 699960, frauds 11689 (1.670%); source rows 20000, frauds 339 (1.695%)
+customer age: 64 ages (18-81); competition rows per age 1370-16513, source rows per age 269-361
+  competition rate (%) by age: 18:0.22 19:0.24 20:0.25 21:0.74 22:0.62 23:0.56 24:0.26 25:0.09 26:0.62 27:1.05 28:0.16 29:0.60 30:0.00 31:0.27 32:0.03 33:0.85 34:1.33 35:1.20 36:3.09 37:0.99 38:1.38 39:2.85 40:1.41 41:1.33 42:1.28 43:1.49 44:1.48 45:1.06 46:2.33 47:1.66 48:1.44 49:2.11 50:1.49 51:1.74 52:1.40 53:1.78 54:1.85 55:1.65 56:2.02 57:1.53 58:1.70 59:1.51 60:1.31 61:1.45 62:2.22 63:2.05 64:1.19 65:3.10 66:2.17 67:1.82 68:2.34 69:2.69 70:6.65 71:3.27 72:2.48 73:3.54 74:1.99 75:2.25 76:3.22 77:4.86 78:2.38 79:3.09 80:1.89 81:2.47
+  competition rows by age:     18:5381 19:11005 20:9689 21:15163 22:3079 23:10798 24:12296 25:3286 26:8448 27:14659 28:11020 29:13912 30:1370 31:6002 32:3761 33:13505 34:7672 35:10789 36:2004 37:5432 38:11349 39:5816 40:14106 41:11204 42:14387 43:15492 44:12529 45:13824 46:6665 47:14316 48:13652 49:11362 50:12990 51:11141 52:12545 53:12322 54:12892 55:14624 56:13017 57:13763 58:13797 59:13384 60:13780 61:12781 62:15767 63:11809 64:11585 65:7514 66:12514 67:12853 68:11388 69:10063 70:3622 71:9689 72:12974 73:8752 74:12755 75:16420 76:9592 77:6891 78:13751 79:16513 80:13014 81:11485
+  source rows by age:          18:300 19:328 20:311 21:354 22:282 23:312 24:325 25:283 26:298 27:340 28:311 29:330 30:269 31:290 32:289 33:327 34:304 35:308 36:278 37:285 38:303 39:290 40:334 41:299 42:333 43:343 44:311 45:324 46:288 47:325 48:325 49:312 50:320 51:305 52:314 53:311 54:315 55:331 56:315 57:317 58:314 59:313 60:331 61:306 62:350 63:311 64:311 65:296 66:310 67:318 68:308 69:305 70:285 71:306 72:317 73:297 74:320 75:361 76:299 77:293 78:322 79:356 80:320 81:312
+  competition, largest standard error of a single-age rate: 0.41 points (age 70)
+  age 35: 1.20% (129 of 10789), age 36: 3.09% (62 of 2004), age 37: 0.99% (54 of 5432)
+  age 69: 2.69% (271 of 10063), age 70: 6.65% (241 of 3622), age 71: 3.27% (317 of 9689)
+  competition, equal rates at all ages: chi-square 3621.6 on 63 df, p 0.0e+00
+  competition, equal rates inside each of eight 8-year bands: chi-square 1139.9 on 56 df, p 7.2e-202
+  source, equal rates inside each of eight 8-year bands: chi-square 80.1 on 56 df, p 1.9e-02
+  ages 18-33 competition  rows  143374 frauds   727 rate 0.51% (95% interval 0.47 to 0.54)
+  ages 18-33 source       rows    4949 frauds    72 rate 1.45% (95% interval 1.12 to 1.79)
+  ages 34-49 competition  rows  170599 frauds  2594 rate 1.52% (95% interval 1.46 to 1.58)
+  ages 34-49 source       rows    4962 frauds    71 rate 1.43% (95% interval 1.10 to 1.76)
+  ages 50-65 competition  rows  203711 frauds  3501 rate 1.72% (95% interval 1.66 to 1.78)
+  ages 50-65 source       rows    5060 frauds    91 rate 1.80% (95% interval 1.43 to 2.16)
+  ages 66-81 competition  rows  182276 frauds  4867 rate 2.67% (95% interval 2.60 to 2.74)
+  ages 66-81 source       rows    5029 frauds   105 rate 2.09% (95% interval 1.69 to 2.48)
+first decimal digit of amount_usd: competition rate (%) 1.90 1.50 1.56 1.54 1.92 1.77 1.48 1.73 1.71 1.63; largest se 0.052; chi-square 99.0 on 9 df, p 2.5e-17
+  source rate (%) 1.40 1.65 1.75 1.60 2.11 1.63 1.47 2.28 1.81 1.26; rows per digit 1928-2062; largest se 0.340; chi-square 10.3 on 9 df, p 0.325
+first decimal digit of hours_since_last_txn: competition rate (%) 2.20 1.58 1.60 1.39 1.92 1.85 1.27 1.49 1.63 1.68; largest se 0.059; chi-square 302.0 on 9 df, p 9.7e-60
+  source rate (%) 1.84 1.94 2.60 1.47 1.47 1.95 1.12 1.49 1.30 1.73; rows per digit 1848-2063; largest se 0.355; chi-square 19.1 on 9 df, p 0.025
+first decimal digit of distance_from_home_km: competition rate (%) 1.94 1.62 1.49 1.50 1.81 1.73 1.48 1.73 1.68 1.68; largest se 0.054; chi-square 86.6 on 9 df, p 8.0e-15
+  source rate (%) 1.34 1.82 2.06 1.61 1.29 1.46 2.22 1.62 1.37 2.16; rows per digit 1904-2088; largest se 0.331; chi-square 13.2 on 9 df, p 0.152
+correlation between the digit profiles of two fields (competition): amount_usd / hours_since_last_txn 0.842, amount_usd / distance_from_home_km 0.910, hours_since_last_txn / distance_from_home_km 0.877
+wrote report_tmp/figs/pattern.pdf/.png

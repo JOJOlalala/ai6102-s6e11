@@ -88,7 +88,8 @@ def fig_lbnoise(y, p, threshold, out):
     ax.annotate(f"full OOF\n{full:.5f}", xy=(full, top * 1.3), xytext=(-3, 0), textcoords="offset points",
                 ha="right", va="top", fontsize=6.5, color=INK)
     ax.axvline(threshold, color=INK2, lw=0.9, ls=(0, (3, 2)), zorder=3)
-    ax.annotate(f"top-10% cut-off {threshold:.5f}\n{share:.1f}% of draws above", xy=(threshold, top * 1.3),
+    # The cut-off is other teams' score on the public rows and would move with the sample, so it is shown for scale only.
+    ax.annotate(f"public top-10% score\n{threshold:.5f} (15 Nov)", xy=(threshold, top * 1.3),
                 xytext=(3, 0), textcoords="offset points", ha="left", va="top", fontsize=6.5, color=INK2)
     ax.xaxis.set_major_locator(matplotlib.ticker.MultipleLocator(0.005))
     ax.xaxis.set_major_formatter(matplotlib.ticker.FormatStrFormatter("%.3f"))
@@ -116,14 +117,14 @@ def fig_transfer(ev_boost, ev_glm, out):
             ax.plot(r["beta"], yv + dy, marker=mk, ms=4, color=col, mec="white", mew=0.6, ls="none", zorder=3)
             print(f"transfer {lab:36s} {key:22s} beta {r['beta']:+.3f} [{lo:+.3f}, {hi:+.3f}]")
         ax.plot([], [], marker=mk, ms=4, color=col, mec="white", mew=0.6, lw=1.1, label=lab)
-    for xv, txt in ((0, "no transfer"), (1, "full strength")):
-        ax.axvline(xv, color=INK2, lw=0.6, ls=(0, (3, 2)), zorder=1)
+    for xv, txt in ((0, "ignored"), (1, "used in full")):
+        ax.plot([xv, xv], [-0.6, len(rows) - 0.5], color=INK2, lw=0.6, ls=(0, (3, 2)), zorder=1)  # stops below its label
         ax.text(xv, len(rows) - 0.45, txt, ha="center", va="bottom", fontsize=6.5, color=INK2)
     ax.set_yticks(ys)
     ax.set_yticklabels([lab for _, lab in rows], fontsize=6.5)
     ax.set_ylim(-0.6, len(rows) - 0.05)
     ax.set_xlim(-0.3, 1.12)
-    ax.set_xlabel(r"transfer coefficient $\beta$ (95% interval)")
+    ax.set_xlabel(r"weight $\beta$ (95% interval)")
     ax.tick_params(axis="y", length=0)
     ax.spines["left"].set_visible(False)
     fig.legend(loc="outside upper center", ncol=2, frameon=False, handlelength=1.6, columnspacing=1.2)

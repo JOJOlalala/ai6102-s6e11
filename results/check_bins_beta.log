@@ -1,0 +1,32 @@
+rows train+test: 999944
+--- 2048 quantile bins
+amount_usd               distinct  14800  bins  1858  single-value bins   504  rows in single-value bins  24.24%
+hours_since_last_txn     distinct   3755  bins  1128  single-value bins   604  rows in single-value bins  62.03%
+distance_from_home_km    distinct   4465  bins  1543  single-value bins   632  rows in single-value bins  43.35%
+account_balance_usd      distinct  49123  bins  2016  single-value bins    20  rows in single-value bins   0.72%
+velocity_score           distinct    674  bins   454  single-value bins   411  rows in single-value bins  90.44%
+merchant_risk_score      distinct    959  bins   566  single-value bins   492  rows in single-value bins  95.80%
+card_age_months          distinct     50  bins    39  single-value bins    37  rows in single-value bins  99.89%
+customer_age             distinct     64  bins    63  single-value bins    62  rows in single-value bins  97.65%
+--- 256 quantile bins
+amount_usd               distinct  14800  bins   256  single-value bins     0  rows in single-value bins   0.00%
+hours_since_last_txn     distinct   3755  bins   256  single-value bins     9  rows in single-value bins   2.79%
+distance_from_home_km    distinct   4465  bins   256  single-value bins     0  rows in single-value bins   0.00%
+account_balance_usd      distinct  49123  bins   256  single-value bins     0  rows in single-value bins   0.00%
+velocity_score           distinct    674  bins   238  single-value bins   129  rows in single-value bins  43.71%
+merchant_risk_score      distinct    959  bins   255  single-value bins   109  rows in single-value bins  34.35%
+card_age_months          distinct     50  bins    31  single-value bins    29  rows in single-value bins  99.07%
+customer_age             distinct     64  bins    61  single-value bins    58  rows in single-value bins  95.53%
+--- 32 quantile bins
+amount_usd               distinct  14800  bins    32  single-value bins     0  rows in single-value bins   0.00%
+hours_since_last_txn     distinct   3755  bins    32  single-value bins     0  rows in single-value bins   0.00%
+distance_from_home_km    distinct   4465  bins    32  single-value bins     0  rows in single-value bins   0.00%
+account_balance_usd      distinct  49123  bins    32  single-value bins     0  rows in single-value bins   0.00%
+velocity_score           distinct    674  bins    30  single-value bins     0  rows in single-value bins   0.00%
+merchant_risk_score      distinct    959  bins    32  single-value bins     0  rows in single-value bins   0.00%
+card_age_months          distinct     50  bins    20  single-value bins    15  rows in single-value bins  82.22%
+customer_age             distinct     64  bins    32  single-value bins     7  rows in single-value bins  13.09%
+--- weight beta, boosted model, seed 42 (real vs shuffled): all competition rows 0.86832 (se 0.02451)
+300 subsets with 339 frauds and 19661 normal rows: beta mean 0.87916, sd 0.14994, min 0.414, 2.5% 0.599, 97.5% 1.176, max 1.251
+source beta 0.21761: 4.41 sd below the mean; subsets at or below it: 0
+source beta 0.26: 4.13 sd below the mean; subsets at or below it: 0
