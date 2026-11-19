@@ -1,0 +1,8 @@
+# v9: coarse-encoding control for the ablation of value-level encodings (report Sec. 4.2).
+# Main model, strict protocol, inner early stopping, seed 42. --te_bins K encodes each of the eight wide numeric columns
+# by one of K quantile bins instead of by its exact value, and encodes no digit key (the digit keys stay as raw features).
+# Unlike the within-bin shuffle this adds no noise, and unlike narrow-only it still lets the logistic regression see the
+# wide columns. real (grid_v4) - bins32 = what exact values and digits add over a 32-bin encoding.
+OMP_NUM_THREADS=6 OPENBLAS_NUM_THREADS=6 MKL_NUM_THREADS=6 nice -n 10 .venv/bin/python -I src/train2.py --out runs/v9 --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --te_bins 32 --name bins32 --seed 42 --threads 6 > logs/V9_bins32.log 2>&1
+OMP_NUM_THREADS=6 OPENBLAS_NUM_THREADS=6 MKL_NUM_THREADS=6 nice -n 10 .venv/bin/python -I src/train2.py --out runs/v9 --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --te_bins 256 --name bins256 --seed 42 --threads 6 > logs/V9_bins256.log 2>&1
+OMP_NUM_THREADS=6 OPENBLAS_NUM_THREADS=6 MKL_NUM_THREADS=6 nice -n 10 .venv/bin/python -I src/train2.py --out runs/v9 --model glm_lgbm --fe base,digits,te --es inner --te_strict 1 --te_bins 2048 --name bins2048 --seed 42 --threads 6 > logs/V9_bins2048.log 2>&1

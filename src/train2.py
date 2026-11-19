@@ -48,7 +48,7 @@ def digit_keys(x):
     return {"int": ip, "int10": ip // 10, "d1": (c // 10) % 10, "d2": c % 10, "lead": lead}
 
 
-def build_static(data_dir, fe):
+def build_static(data_dir, fe, te_bins=0):
     d = Path(data_dir)
     tr = pd.read_csv(d / "train.csv")
     te = pd.read_csv(d / "test.csv")
@@ -83,6 +83,13 @@ def build_static(data_dir, fe):
     if "freq" in fe:
         for c in num:
             X[f"{c}__freq"] = allx[c].map(allx[c].value_counts()).astype(np.float32)
+    if te_bins:
+        # Coarse-encoding control: encode each wide numeric column by quantile bin (identical values share a bin)
+        # instead of by exact value, and encode no digit key. The digit keys stay in X as raw integer features.
+        for c in num:
+            if f"v_{c}" in bins:
+                keys[f"v_{c}"] = pd.qcut(allx[c], te_bins, labels=False, duplicates="drop").to_numpy(dtype=np.int64)
+        keys = {name: codes for name, codes in keys.items() if not name.startswith("d_")}
     return X, y, n_tr, keys, bins, te["id"].to_numpy()
 
 
@@ -182,6 +189,8 @@ def main():
     ap.add_argument("--name", default=None)
     ap.add_argument("--te_cols", default="all", help="comma list of raw columns whose keys get target-encoded")
     ap.add_argument("--te_placebo", type=int, default=0, help="1 = shuffle labels within 32 quantile bins before encoding")
+    ap.add_argument("--te_bins", type=int, default=0,
+                    help="K > 0 = encode the wide numeric columns by K quantile bins, not exact values; no digit-key encodings")
     ap.add_argument("--te_strict", type=int, default=0, help="1 = strict encoding protocol (see module docstring)")
     ap.add_argument("--es", default="outer", choices=["outer", "inner"], help="which rows drive early stopping")
     ap.add_argument("--es_frac", type=float, default=0.1, help="share of outer-training rows held out with --es inner")
@@ -193,13 +202,13 @@ def main():
     ptag = "".join(f"_{k}{v}" for k, v in params.items())
     estag = "_esin" if a.es == "inner" else ""
     tetag = (("" if a.te_cols == "all" else "_tc-" + a.te_cols.replace(",", "-")) + ("_placebo" if a.te_placebo else "")
-             + ("_strict" if a.te_strict else ""))
+             + (f"_bins{a.te_bins}" if a.te_bins else "") + ("_strict" if a.te_strict else ""))
     name = a.name or f"v2_{a.model}{ptag}_{a.fe.replace(',', '+')}{tetag}_m{a.te_m:g}{estag}_s{a.seed}"
     out = Path(a.out) / name
     out.mkdir(parents=True, exist_ok=True)
 
     t0 = time.time()
-    X, y, n_tr, keys, bins, test_ids = build_static(a.data, fe)
+    X, y, n_tr, keys, bins, test_ids = build_static(a.data, fe, a.te_bins)
     if a.shuffle_labels:
         y = np.random.default_rng(a.seed).permutation(y)
         name, out = name + "_SHUFFLED", Path(a.out) / (name + "_SHUFFLED")

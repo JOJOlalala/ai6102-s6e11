@@ -1,0 +1,13 @@
+== boosted, seed 42: real vs narrow-only (second slot = narrow-only): 1 seed pair(s); original rows covered on amount and balance: 10729 (53.6%), positives 175 of 339
+  competition OOF                n=699960 pos=11689  AUC real 0.95011 placebo 0.94821 delta +0.00190 | beta +0.778 (Wald [+0.727, +0.829], LR p 0.0000)
+  original, all rows             n= 20000 pos=  339  AUC real 0.93686 placebo 0.94055 delta -0.00368 [-0.00749, +0.00020] | beta +0.258 (Wald [+0.069, +0.446], LR p 0.0064; boot [+0.079, +0.453])
+  original, covered              n= 10729 pos=  175  AUC real 0.92794 placebo 0.93215 delta -0.00421 [-0.01013, +0.00144] | beta +0.302 (Wald [+0.037, +0.568], LR p 0.0229; boot [+0.009, +0.587])
+  original, not covered          n=  9271 pos=  164  AUC real 0.94644 placebo 0.94982 delta -0.00338 [-0.00854, +0.00163] | beta +0.213 (Wald [-0.055, +0.481], LR p 0.1141; boot [-0.055, +0.499])
+  beta covered - not covered: +0.089 (se 0.192, z +0.46, two-sided p 0.642)
+----
+== boosted, seed 42: narrow-only vs within-bin shuffle (first slot = narrow-only): 1 seed pair(s); original rows covered on amount and balance: 10729 (53.6%), positives 175 of 339
+  competition OOF                n=699960 pos=11689  AUC real 0.94821 placebo 0.94727 delta +0.00094 | beta +0.828 (Wald [+0.751, +0.904], LR p 0.0000)
+  original, all rows             n= 20000 pos=  339  AUC real 0.94055 placebo 0.93977 delta +0.00078 [-0.00128, +0.00296] | beta +0.441 (Wald [+0.100, +0.782], LR p 0.0106; boot [+0.115, +0.781])
+  original, covered              n= 10729 pos=  175  AUC real 0.93215 placebo 0.93290 delta -0.00075 [-0.00341, +0.00196] | beta +0.173 (Wald [-0.280, +0.626], LR p 0.4503; boot [-0.208, +0.647])
+  original, not covered          n=  9271 pos=  164  AUC real 0.94982 placebo 0.94729 delta +0.00253 [-0.00051, +0.00584] | beta +0.766 (Wald [+0.263, +1.268], LR p 0.0029; boot [+0.249, +1.278])
+  beta covered - not covered: -0.593 (se 0.345, z -1.72, two-sided p 0.086)
